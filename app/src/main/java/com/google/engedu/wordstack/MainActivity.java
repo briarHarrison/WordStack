@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initGame(String scrambled){
-
+        //init game still needs code
     }
 
 
