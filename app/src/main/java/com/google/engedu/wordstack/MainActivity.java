@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
         chooseWords();
-        scrambleWords();
-        initGame();
+        String scrambled = scrambleWords();
+        initGame(scrambled);
         return true;
     }
 
@@ -167,11 +167,35 @@ public class MainActivity extends AppCompatActivity {
         Log.i("starting", "Word1: " + word1 + " and Word2: " + word2);
     }
 
-    private void scrambleWords(){
-        
+    /**
+     * split words into arrays and then mix them into one array.
+     * @return a String of the scrambled letters from both words.
+     */
+    private String scrambleWords(){
+        char[] word1Arr = word1.toCharArray();
+        char[] word2Arr = word2.toCharArray();
+
+        StringBuilder string = new StringBuilder();
+
+        //while both words have letters still in them
+            //choose one at random
+            //add the next letter to the string builder
+        while(word1Arr[0] != 0 || word2Arr[0] != 0){
+            int r = random.nextInt(2);
+            if(r == 0){
+                string.
+            }
+        }
+
+        //if word1 still has letters
+            //add them all
+        //else
+            //add all letters in word2
+
+        return null;
     }
 
-    private void initGame(){
+    private void initGame(String scrambled){
 
     }
 
