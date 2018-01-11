@@ -19,6 +19,7 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -162,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
 
         word1 = words.get(randIndexA);
         word2 = words.get(randIndexB);
+
+        Log.i("starting", "Word1: " + word1 + " and Word2: " + word2);
     }
 
     private void scrambleWords(){
