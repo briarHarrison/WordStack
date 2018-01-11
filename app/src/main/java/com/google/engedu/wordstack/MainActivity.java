@@ -149,12 +149,25 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * choose two words from the dictionary (words) and save them to word1, word2
+     */
     private void chooseWords(){
+        int randIndexA = random.nextInt(words.size());
+        int randIndexB = random.nextInt(words.size());
 
+        //just in case they are the same
+        while (randIndexA == randIndexB)
+            randIndexB = random.nextInt(words.size());
+
+        word1 = words.get(randIndexA);
+        word2 = words.get(randIndexB);
     }
+
     private void scrambleWords(){
-
+        
     }
+
     private void initGame(){
 
     }
