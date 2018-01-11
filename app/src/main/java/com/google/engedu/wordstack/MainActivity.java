@@ -143,13 +143,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+        chooseWords();
+        scrambleWords();
+        initGame();
         return true;
     }
+
+    private void chooseWords(){
+
+    }
+    private void scrambleWords(){
+
+    }
+    private void initGame(){
+
+    }
+
+
 
     public boolean onUndo(View view) {
         /**
