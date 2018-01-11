@@ -158,6 +158,55 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * choose two words from the dictionary (words) and save them to word1, word2
+     */
+    private void chooseWords(){
+        int randIndexA = random.nextInt(words.size());
+        int randIndexB = random.nextInt(words.size());
+
+        //just in case they are the same
+        while (randIndexA == randIndexB)
+            randIndexB = random.nextInt(words.size());
+
+        word1 = words.get(randIndexA);
+        word2 = words.get(randIndexB);
+
+        Log.i("starting", "Word1: " + word1 + " and Word2: " + word2);
+    }
+
+    /**
+     * split words into arrays and then mix them into one array.
+     * @return a String of the scrambled letters from both words.
+     */
+    private String scrambleWords(){
+        char[] word1Arr = word1.toCharArray();
+        char[] word2Arr = word2.toCharArray();
+
+        StringBuilder string = new StringBuilder();
+
+        //while both words have letters still in them
+            //choose one at random
+            //add the next letter to the string builder
+        while(word1Arr[0] != 0 || word2Arr[0] != 0){
+            int r = random.nextInt(2);
+            if(r == 0){
+
+            }
+        }
+
+        //if word1 still has letters
+            //add them all
+        //else
+            //add all letters in word2
+
+        return null;
+    }
+
+    private void initGame(String scrambled){
+        //init game still needs code
+    }
+    
     public boolean onUndo(View view) {
         /**
          **
