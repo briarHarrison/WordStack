@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
                  **  YOUR CODE GOES HERE
                  **
                  **/
+                if (word.length() == WORD_LENGTH) {
+                    //add to list
+                    words.add(word);
+                    Log.d("Added word: ", word);
+                }
             }
         } catch (IOException e) {
             Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_DOWN && !stackedLayout.empty()) {
                 LetterTile tile = (LetterTile) stackedLayout.peek();
                 tile.moveToViewGroup((ViewGroup) v);
-                if (stackedLayout.empty()) {
+                if (stackedLayout.empty()) { // if the stack is empty
                     TextView messageBox = (TextView) findViewById(R.id.message_box);
                     messageBox.setText(word1 + " " + word2);
                 }
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                  **  YOUR CODE GOES HERE
                  **
                  **/
+
                 return true;
             }
             return false;
@@ -144,62 +150,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
-        chooseWords();
-        String scrambled = scrambleWords();
-        initGame(scrambled);
+        /**
+         **
+         **  YOUR CODE GOES HERE
+         **
+         **/
         return true;
     }
-
-    /**
-     * choose two words from the dictionary (words) and save them to word1, word2
-     */
-    private void chooseWords(){
-        int randIndexA = random.nextInt(words.size());
-        int randIndexB = random.nextInt(words.size());
-
-        //just in case they are the same
-        while (randIndexA == randIndexB)
-            randIndexB = random.nextInt(words.size());
-
-        word1 = words.get(randIndexA);
-        word2 = words.get(randIndexB);
-
-        Log.i("starting", "Word1: " + word1 + " and Word2: " + word2);
-    }
-
-    /**
-     * split words into arrays and then mix them into one array.
-     * @return a String of the scrambled letters from both words.
-     */
-    private String scrambleWords(){
-        char[] word1Arr = word1.toCharArray();
-        char[] word2Arr = word2.toCharArray();
-
-        StringBuilder string = new StringBuilder();
-
-        //while both words have letters still in them
-            //choose one at random
-            //add the next letter to the string builder
-        while(word1Arr[0] != 0 || word2Arr[0] != 0){
-            int r = random.nextInt(2);
-            if(r == 0){
-                string.
-            }
-        }
-
-        //if word1 still has letters
-            //add them all
-        //else
-            //add all letters in word2
-
-        return null;
-    }
-
-    private void initGame(String scrambled){
-
-    }
-
-
 
     public boolean onUndo(View view) {
         /**
