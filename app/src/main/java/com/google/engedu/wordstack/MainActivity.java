@@ -34,7 +34,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("starting", "The game is creating itself");
         setContentView(R.layout.activity_main);
         AssetManager assetManager = getAssets();
         try {
@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
+        Log.i("starting", "The game has started");
 
         chooseWords();
         String scrambled = scrambleWords();
@@ -175,27 +176,51 @@ public class MainActivity extends AppCompatActivity {
      * @return a String of the scrambled letters from both words.
      */
     private String scrambleWords(){
+        Log.i("starting", "Scrambling the words");
         char[] word1Arr = word1.toCharArray();
         char[] word2Arr = word2.toCharArray();
 
-        StringBuilder string = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         //while both words have letters still in them
             //choose one at random
             //add the next letter to the string builder
-        while(word1Arr[0] != 0 || word2Arr[0] != 0){
+        while(word1Arr[0] != 0 && word2Arr[0] != 0){
             int r = random.nextInt(2);
             if(r == 0){
-
+                stringBuilder.append(word1Arr[0]);
+                word1Arr = shiftWord(word1Arr);
+            } else {
+                stringBuilder.append(word2Arr[0]);
+                word2Arr = shiftWord(word2Arr);
             }
         }
 
         //if word1 still has letters
-            //add them all
-        //else
-            //add all letters in word2
+        //add them all
+        while (word1Arr[0] != 0){
+            stringBuilder.append(word1Arr[0]);
+            word1Arr = shiftWord(word1Arr);
+        }
 
-        return null;
+        //else
+        //add all letters in word2
+        while (word2Arr[0] != 0){
+            stringBuilder.append(word2Arr[0]);
+            word2Arr = shiftWord(word2Arr);
+        }
+
+        Log.i("Scrambling", "the scrambled string is "+ stringBuilder.toString());
+        return stringBuilder.toString();
+    }
+
+    private char[] shiftWord (char[] word){
+        Log.d("shifting", "word: " + word);
+        for (int i = 0; i < word.length && word[i] != 0; i++){
+            word[i] = word[i+1];
+        }
+        Log.d("shifting", "New word: " + word);
+        return word;
     }
 
     private void initGame(String scrambled){
