@@ -150,11 +150,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
-        /**
-         **
-         **  YOUR CODE GOES HERE
-         **
-         **/
+
+        chooseWords();
+        String scrambled = scrambleWords();
+        initGame(scrambled);
         return true;
     }
 
@@ -206,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     private void initGame(String scrambled){
         //init game still needs code
     }
-    
+
     public boolean onUndo(View view) {
         /**
          **
